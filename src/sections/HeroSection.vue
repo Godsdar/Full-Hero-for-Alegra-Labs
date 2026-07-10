@@ -142,12 +142,6 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
-
-    <div class="absolute bottom-6 left-8 z-20 hidden md:block">
-      <!-- <span class="font-mono text-[10px] uppercase tracking-widest text-brand-dark/40"
-        >© 2026 Edition</span
-      >
-    </div> -->
   </section>
 </template>
 

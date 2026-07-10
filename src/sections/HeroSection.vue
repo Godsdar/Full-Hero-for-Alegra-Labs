@@ -87,7 +87,7 @@ onUnmounted(() => {
       </div>
     </header>
 
-    <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply video-mask">
+    <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply">
       <video
         ref="videoRef"
         src="../assets/hero video.mp4"

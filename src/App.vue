@@ -2,8 +2,8 @@
 // import { ref } from 'vue'
 // import Preloader from './sections/Preloader.vue'
 import HeroSection from './sections/HeroSection.vue';
-import Test from './sections/Test.vue';
 import DentalSection from './sections/DentalSection.vue';
+import SmokeParticles from './components/SmokeParticles.vue';
 </script>
 
 <template>
@@ -23,6 +23,7 @@ import DentalSection from './sections/DentalSection.vue';
     <!-- Используем v-if или рендерим сразу под прелоадером, так как прелоадер закроет экран за счет fixed -->
     <main>
       <HeroSection />
+      <!-- <SmokeParticles /> -->
       <DentalSection />
     </main>
   </div>

@@ -11,72 +11,69 @@ const flag = ref(false);
 const onMetaDataLoaded = () => {
   if (videoRef.value) {
     duration.value = videoRef.value.duration;
-    // console.log('duration: ' + (duration.value / 4).toFixed(1));
   }
 };
 
 const handleTimeUpdate = (event: Event) => {
   const video = event.target as HTMLVideoElement;
   currentTime.value = video.currentTime;
-  // console.log(currentTime.value, duration.value);
-  if (currentTime.value >= duration.value / 4 && !flag.value) {
+
+  if (currentTime.value >= duration.value / 4 && !flag.value && videoRef.value) {
     flag.value = true;
     videoRef.value.playbackRate = 0.5;
   }
 };
 
+const handleScroll = () => {
+  if (videoRef.value) videoRef.value.playbackRate = 2;
+};
+
 onMounted(() => {
   if (videoRef.value) videoRef.value.playbackRate = 0.5;
-  document.addEventListener('scroll', () => handleScroll);
+  // Поправлено: привязываем обработчик напрямую к window
+  window.addEventListener('scroll', handleScroll);
 });
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll);
 });
-
-const handleScroll = () => {
-  if (videoRef.value) videoRef.value.playbackRate = 2;
-};
 </script>
 
 <template>
   <section
-    class="relative w-full min-h-screen p-20 flex flex-col bg-brand-bg text-brand-dark overflow-hidden font-sans select-none"
+    class="relative w-full min-h-screen flex flex-col bg-brand-bg text-brand-dark overflow-hidden font-sans select-none"
   >
     <header class="w-full flex justify-between items-center px-8 py-6 z-30 relative">
       <div class="flex items-center gap-1 cursor-pointer">
         <span class="font-ivy text-2xl font-bold tracking-tighter">
           <img src="../assets/svg/icons/logo.svg" alt="" />
         </span>
-        <span class="font-sans text-xs uppercase tracking-[0.2em] font-medium hidden sm:inline"
-          >Alegra</span
-        >
       </div>
 
       <nav class="flex items-center gap-8 md:gap-12 px-8 py-3 bg-brand-dark/[.1] rounded-full">
         <a
           href="#"
-          class="text-[10px] md:text-xs tracking-[0.3em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
+          class="text-[10px] md:text-xs tracking-[0.1em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
           >Home</a
         >
         <a
           href="#"
-          class="text-[10px] md:text-xs tracking-[0.3em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
+          class="text-[10px] md:text-xs tracking-[0.1em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
           >About</a
         >
         <a
           href="#"
-          class="text-[10px] md:text-xs tracking-[0.3em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
+          class="text-[10px] md:text-xs tracking-[0.1em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
           >Service</a
         >
         <a
           href="#"
-          class="text-[10px] md:text-xs tracking-[0.3em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
+          class="text-[10px] md:text-xs tracking-[0.1em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
           >Work</a
         >
         <a
           href="#"
-          class="text-[10px] md:text-xs tracking-[0.3em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
+          class="text-[10px] md:text-xs tracking-[0.1em] font-medium text-brand-dark/60 hover:text-brand-dark transition-colors"
           >Insight</a
         >
       </nav>
@@ -102,11 +99,11 @@ const handleScroll = () => {
         @loadedmetadata="onMetaDataLoaded"
         class="w-full h-full object-cover pointer-events-none"
       ></video>
-      <canvas ref="canvasRef" class="w-full h-full object-cover"></canvas>
+      <canvas ref="canvasRef" class="w-full h-full"></canvas>
     </div>
 
     <div
-      class="flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-center z-20 relative pt-12 pb-24"
+      class="flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col justify-start z-20 relative pt-2 md:pt-12 pb-24"
     >
       <div class="w-full">
         <h1
@@ -137,7 +134,7 @@ const handleScroll = () => {
 
         <div class="text-left md:text-right max-w-md self-end md:ml-auto">
           <p
-            class="font-sans text-sm sm:text-base md:text-lg uppercase tracking-[0.15em] leading-relaxed text-brand-dark/80 font-medium"
+            class="font-sans text-base sm:text-2lg md:text-3xl uppercase tracking-[0.15em] leading-relaxed text-brand-dark/80 font-medium"
           >
             Begins with an even <br class="hidden md:inline" />
             better story

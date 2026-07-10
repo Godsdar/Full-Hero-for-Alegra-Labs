@@ -15,12 +15,16 @@
     "format": "oxfmt src/"
   },
   "dependencies": {
+    "@tresjs/core": "^5.8.3",
+    "gsap": "^3.15.0",
+    "three": "^0.185.1",
     "vue": "^3.5.38"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.2",
     "@tsconfig/node24": "^24.0.4",
     "@types/node": "^24.13.2",
+    "@types/three": "^0.185.1",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vue/eslint-config-typescript": "^14.8.0",
     "@vue/tsconfig": "^0.9.1",

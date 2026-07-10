@@ -87,7 +87,7 @@ onUnmounted(() => {
       </div>
     </header>
 
-    <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply">
+    <div class="absolute inset-0 z-10 pointer-events-none mix-blend-multiply video-mask">
       <video
         ref="videoRef"
         src="../assets/hero video.mp4"
@@ -154,5 +154,21 @@ onUnmounted(() => {
 <style scoped>
 h1 {
   word-spacing: -0.05em;
+}
+/* Градиентная маска: сверху видео плотное, с 50% высоты начинает плавно растворяться,
+   а на 85% полностью исчезает в прозрачность, оголяя чистый кремовый фон */
+.video-mask {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(0, 0, 0, 0) 85%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(0, 0, 0, 0) 85%
+  );
 }
 </style>
